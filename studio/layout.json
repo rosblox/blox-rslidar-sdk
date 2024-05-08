@@ -1,0 +1,32 @@
+{
+    "configById": {
+      "RawMessages!2ep7xdl": {
+        "autoExpandMode": "auto",
+        "diffEnabled": false,
+        "diffMethod": "custom",
+        "diffTopicPath": "",
+        "showFullMessageForDiff": false,
+        "topicPath": "/joint_group_velocity_controller/commands"
+      },
+      "RawMessages!4jkzh88": {
+        "autoExpandMode": "auto",
+        "diffEnabled": false,
+        "diffMethod": "custom",
+        "diffTopicPath": "",
+        "showFullMessageForDiff": false,
+        "topicPath": "/diff_drive_controller/cmd_vel_unstamped"
+      }
+    },
+    "globalVariables": {},
+    "userNodes": {},
+    "linkedGlobalVariables": [],
+    "playbackConfig": {
+      "speed": 1,
+      "messageOrder": "receiveTime"
+    },
+    "layout": {
+      "first": "RawMessages!2ep7xdl",
+      "second": "RawMessages!4jkzh88",
+      "direction": "column"
+    }
+  }
