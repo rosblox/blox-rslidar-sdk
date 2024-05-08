@@ -12,6 +12,7 @@ services:
     image: ghcr.io/rosblox/studio:latest
     volumes:
       - ./studio/layout.json:/src/layout.json
+      - ./studio/layout.json:/foxglove/default-layout.json
     ports:
       - 8080:8080
     restart: always
@@ -23,10 +24,13 @@ services:
     restart: always
     command: ros2 launch rosbridge_server rosbridge_websocket_launch.xml
 
-  ros-pca9685-ros2-control:
-    image: ghcr.io/rosblox/ros-pca9685-ros2-control:humble 
-    devices:
-      - "/dev/i2c-1:/dev/i2c-1"
+  ros-rslidar-sdk:
+    image: ghcr.io/rosblox/ros-rslidar-sdk:humble 
     restart: always
     network_mode: "host"
-    command: ros2 launch pca9685_ros2_control_example mixed_example.launch.py
+    privileged: true
+    ipc: host
+    pid: host
+    environment:
+      - UID=${HOST_UID}
+    command: su - ros /run.sh
