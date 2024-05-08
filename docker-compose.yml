@@ -1,4 +1,3 @@
-version: '3.9'
 
 services:
   nginx:
@@ -17,13 +16,26 @@ services:
       - 8080:8080
     restart: always
 
+  ros-foxglove-bridge:
+    image: ghcr.io/rosblox/ros-foxglove-bridge:humble
+    restart: always
+    network_mode: "host"
+    ipc: host
+    pid: host
+    environment:
+      - UID=${HOST_UID}
+    command: su - ros /run.sh
+
   ros-rosbridge-suite:
     image: ghcr.io/rosblox/ros-rosbridge-suite:humble
-    ports:
-      - 9090:9090
     restart: always
-    command: ros2 launch rosbridge_server rosbridge_websocket_launch.xml
-
+    network_mode: "host"
+    ipc: host
+    pid: host
+    environment:
+      - UID=${HOST_UID}
+    command: su - ros /run.sh
+    
   ros-rslidar-sdk:
     image: ghcr.io/rosblox/ros-rslidar-sdk:humble 
     restart: always
