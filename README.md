@@ -1,1 +1,1 @@
-# BloX RSLidar-SDK for Robosence Bpearl
+# BloX RSLidar-SDK for Robosense Bpearl
